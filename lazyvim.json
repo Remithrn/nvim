@@ -1,0 +1,16 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.editor.telescope",
+    "lazyvim.plugins.extras.formatting.biome",
+    "lazyvim.plugins.extras.formatting.black",
+    "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.docker",
+    "lazyvim.plugins.extras.lang.python",
+    "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.vscode"
+  ],
+  "news": {
+    "NEWS.md": "10960"
+  },
+  "version": 7
+}
