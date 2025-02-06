@@ -10,15 +10,15 @@ if true then return {} end
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
-
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "eldritch",
-    },
-  },
+  -- { "ellisonleao/gruvbox.nvim" },
+  --
+  -- -- Configure LazyVim to load gruvbox
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "eldritch",
+  --   },
+  -- },
 
   -- change trouble config
   {
@@ -33,10 +33,23 @@ return {
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
+    dependencies = {
+      "hrsh7th/cmp-emoji",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip", -- Integration between cmp and LuaSnip
+    },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
+      local luasnip = require("luasnip")
+
+      opts.snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      }
+
       table.insert(opts.sources, { name = "emoji" })
+      table.insert(opts.sources, { name = "luasnip" })
     end,
   },
 
@@ -164,6 +177,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(_, opts)
+      opts.theme = "eldritch"
       table.insert(opts.sections.lualine_x, {
         function()
           return "😄"
@@ -188,6 +202,7 @@ return {
 
   -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
   { import = "lazyvim.plugins.extras.lang.json" },
+  { "nvim-tree/nvim-web-devicons", opts = {} },
 
   -- add any tools you want to have installed below
   {

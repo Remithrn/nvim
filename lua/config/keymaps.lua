@@ -8,3 +8,4 @@ vim.keymap.set("n", "<A-Down>", ":move +1<CR>", { noremap = true, silent = true 
 -- Move selected lines up/down in visual mode
 vim.keymap.set("v", "<A-Up>", ":move '<-2<CR>gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-Down>", ":move '>+1<CR>gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true })
